@@ -1,11 +1,277 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Carte Routière Agadir Souss Massa</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        nav { position: fixed; top: 0; width: 100%; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); z-index: 1000; padding: 1rem 0; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        nav ul { display: flex; justify-content: center; list-style: none; gap: 2rem; }
+        nav a { text-decoration: none; color: #333; font-weight: 600; padding: 0.5rem 1rem; border-radius: 25px; transition: all 0.3s; }
+        nav a:hover, nav .active { background: #ff6b35; color: white; }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+        }
+
+        /* HEADER en marron */
+        .header {
+            background: linear-gradient(90deg, #5a3b22, #b47b35);
+            color: white;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-top: 40px;
+        }
+
+        .header h1 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .header p {
+            opacity: 0.9;
+            font-size: 1.1rem;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 2rem;
+            align-items: start;
+        }
+
+        .sidebar {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            height: fit-content;
+            position: sticky;
+            top: 2rem;
+        }
+
+        .sidebar h3 {
+            color: #2c3e50;
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+        }
+
+        /* panneau Données Géographiques en marron */
+        .info-geo {
+            background: linear-gradient(135deg, #f5eee3 0%, #f1e0c9 100%);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            border-left: 5px solid #b47b35;
+        }
+
+        .info-geo h4 {
+            color: #8a5a1f;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .stat {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.8rem;
+            padding: 0.5rem 0;
+        }
+
+        .stat-label {
+            color: #7a6245;
+        }
+
+        .stat-value {
+            font-weight: bold;
+            color: #b47b35;
+            font-size: 1rem;
+        }
+
+        .description {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            border-left: 4px solid #b47b35;
+            line-height: 1.6;
+            color: #2c3e50;
+        }
+
+        .map-container {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            height: 700px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #map {
+            height: 100%;
+            width: 100%;
+            border-radius: 15px;
+        }
+
+        .map-legend {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            background: white;
+            padding: 1rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            font-size: 0.9rem;
+            z-index: 1000;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            margin-right: 10px;
+            border: 2px solid white;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+                padding: 1rem;
+            }
+            
+            .sidebar {
+                position: static;
+            }
+            
+            .map-container {
+                height: 500px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <div>hay</div>
+    <nav>
+        <ul>
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="geographie.html" class="active">📍 Géographie</a></li>
+            <li><a href="lieux.html">🏛️ Lieux</a></li>
+            <li><a href="habits.html">👗 Habits</a></li>
+            <li><a href="cuisine.html">🍲 Cuisine</a></li>
+        </ul>
+    </nav>
+    <header class="header">
+        <h1>Explore Souss Massa</h1>
+        <p>Carte Interactive</p>
+    </header>
+
+    <div class="container">
+        <aside class="sidebar">
+            <!-- PANEL INFO GÉOGRAPHIQUES -->
+            <div class="info-geo">
+                <h4>Données Géographiques</h4>
+                <div class="stat">
+                    <span class="stat-label">Superficie :</span>
+                    <span class="stat-value">53 789 km²</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-label">% Territoire Maroc :</span>
+                    <span class="stat-value">7,6 %</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-label">Altitude moyenne :</span>
+                    <span class="stat-value">741 m</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-label">Population :</span>
+                    <span class="stat-value">~3M hab.</span>
+                </div>
+            </div>
+
+            <div class="description">
+                <strong>Souss Massa</strong> est une région du sud-ouest Marocain bordée par l'Océan Atlantique à l'ouest. Elle s'étend entre le Haut Atlas au nord et l'Anti-Atlas au sud, formant un large bassin avec les plaines du Souss et Chtouka-Massa. Capitale : Agadir.
+            </div>
+        </aside>
+
+        <main>
+            <div class="map-container">
+                <div id="map"></div>
+                <div class="map-legend">
+                    <div class="legend-item">
+                        <div class="legend-color" style="background: #e74c3c;"></div>
+                        <span>🏖️ Plages</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color" style="background: #27ae60;"></div>
+                        <span>⛰️ Montagnes</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color" style="background: #3498db;"></div>
+                        <span>🏙️ Villes</span>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    
+    <script>
+        // Initialiser la carte centrée sur Agadir Souss Massa
+        const map = L.map('map').setView([30.4, -9.6], 10);
+
+        // Ajouter la couche OpenStreetMap
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© OpenStreetMap contributors'
+        }).addTo(map);
+
+        // Icônes personnalisées par couleur (inchangé)
+        const icons = {
+            plages: L.divIcon({
+                className: 'custom-marker',
+                html: '<div style="background:#e74c3c;width:30px;height:30px;border-radius:50%;border:3px solid white;box-shadow:0 2px 10px rgba(0,0,0,0.3);"></div>',
+                iconSize: [36, 36],
+                iconAnchor: [18, 36]
+            }),
+            montagnes: L.divIcon({
+                className: 'custom-marker',
+                html: '<div style="background:#27ae60;width:30px;height:30px;border-radius:50%;border:3px solid white;box-shadow:0 2px 10px rgba(0,0,0,0.3);"></div>',
+                iconSize: [36, 36],
+                iconAnchor: [18, 36]
+            }),
+            villes: L.divIcon({
+                className: 'custom-marker',
+                html: '<div style="background:#3498db;width:30px;height:30px;border-radius:50%;border:3px solid white;box-shadow:0 2px 10px rgba(0,0,0,0.3);"></div>',
+                iconSize: [36, 36],
+                iconAnchor: [18, 36]
+            })
+        };
+
+    
+
+        marqueurs.forEach(point => {
+            L.marker(point.coords, { icon: icons[point.type] })
+                .addTo(map)
+                .bindPopup(`<b>${point.name}</b>`);
+        });
+    </script>
 </body>
 </html>
