@@ -1,3 +1,171 @@
-*{
-    background-color: antiquewhite;
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    background: linear-gradient(135deg, #fffdf9 0%, #f5f5f5 100%);
+    font-family: 'Inter', sans-serif;
+    color: #2c3e50;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* HEADER AMÉLIORÉ */
+.header {
+    text-align: center;
+    padding: 80px 20px 60px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.titre {
+font-family: 'Playfair Display', serif;
+font-size: clamp(2.5em, 5vw, 4em);
+background: linear-gradient(135deg, #d4af37, #f1c40f);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text;
+margin-bottom: 20px;
+font-weight: 700;
+letter-spacing: 0.05em;
+}
+
+.intro {
+font-size: 1.3em;
+color: #7f8c8d;
+margin-bottom: 20px;
+max-width: 700px;
+margin-left: auto;
+margin-right: auto;
+}
+
+/* TITRES DE CATÉGORIES */
+h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.2em, 5vw, 3.2em);
+    text-align: center;
+    
+    color: #2c3e50;
+    position: relative;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+}
+
+h2::after {
+    content: '';
+    display: block;
+    width: 100px;
+    height: 4px;
+    background: linear-gradient(135deg, #d4af37, #f39c12);
+    margin: 20px auto 0;
+    border-radius: 2px;
+}
+
+/* PARAGRAPHES AMÉLIORÉS */
+p {
+    font-size: 1.2em;
+    color: #5a6c7d;
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 60px;
+    line-height: 1.8;
+    font-weight: 300;
+    
+}
+
+/* GRILLES UNIFIÉES */
+.grid-cartes1, .grid-cartes2, .grid-cartes3 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 35px;
+    max-width: 1400px;
+    margin: 0 auto 80px;
+    padding: 0 10px;
+}
+
+/* CARTES SANS POINTS */
+.carte {
+    width: 90%;
+    height: 350px;
+    position: relative;
+    border-radius: 28px;
+    overflow: hidden;
+    box-shadow: 0 25px 70px rgba(0,0,0,0.12);
+    cursor: pointer;
+    transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    border: 1px solid rgba(255,255,255,0.2);
+}
+
+.carte:hover {
+    transform: translateY(-20px) scale(1.03);
+    box-shadow: 0 40px 100px rgba(0,0,0,0.2);
+}
+
+.carte[data-theme="or"] .texte-hover,
+.carte[data-theme="sauvage"] .texte-hover,
+.carte[data-theme="velours"] .texte-hover { 
+    background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%); 
+}
+
+/* ICÔNE LOCALISATION */
+.nom-tissu i {
+    margin-right: 10px;
+    color: #d4af37;
+    font-size: 1.1em;
+}
+
+/* SUPPRESSION POINTS */
+.point { display: none; }
+
+.img-tissu {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 0.6s ease;
+}
+
+.carte:hover .img-tissu { opacity: 0; }
+
+.texte-hover {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 30px 35px;
+    opacity: 0;
+    transition: opacity 0.6s ease;
+}
+
+.carte:hover .texte-hover { opacity: 1; }
+
+.nom-tissu {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5em;
+    font-weight: 700;
+    margin-bottom: 18px;
+    color: #2c3e50;
+    letter-spacing: 0.02em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.desc {
+    font-size: 1 em;
+    opacity: 0.96;
+    max-width: 300px;
+    line-height: 1.6;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .header { padding: 70px 20px 60px; border-radius: 0 0 30px 30px; }
+    .grid-cartes1, .grid-cartes2, .grid-cartes3 { 
+        grid-template-columns: 1fr; 
+        gap: 25px; 
+        padding: 0 15px;
+    }
+    h2 { margin: 60px 0 25px; }
+    p { font-size: 1.1em; padding: 0 15px; }
 }
