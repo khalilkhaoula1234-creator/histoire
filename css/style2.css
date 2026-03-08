@@ -13,6 +13,100 @@ line-height:1.6;
 
 /* HEADER */
 
+
+:root {
+    /* Couleurs principales */
+    --primary-blue: #1e3a8a;
+    --primary-blue-light: #2563eb;
+    --gold: #f59e0b;
+    --gold-dark: #d97706;
+    
+    /* Couleurs neutres */
+    --bg-light: #fafafa;
+    --bg-white: #ffffff;
+    --text-dark: #1f2937;
+    --text-gray: #4b5563;
+    --text-light-gray: #6b7280;
+    
+    /* Ombres */
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+    
+    /* Bordures */
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    --radius-xl: 20px;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* ============================================
+   NAVIGATION
+   ============================================ */
+
+.main-nav {
+    background-color: var(--bg-white);
+    padding: 1rem 2rem;
+    box-shadow: var(--shadow-sm);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.nav-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 4rem;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.logo i {
+    color: var(--gold);
+    font-size: 1.5rem;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-gray);
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius-sm);
+    transition: all 0.3s ease;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: var(--primary-blue);
+    background-color: rgba(30, 58, 138, 0.1);
+}
+
 /* HERO HEADER */
 
 .hero{
