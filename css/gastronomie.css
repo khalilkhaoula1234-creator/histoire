@@ -1,0 +1,782 @@
+/* ============================================
+   GASTRONOMIE - STYLE CLAIR ET ÉPURÉ
+   ============================================ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* Couleurs principales */
+    --primary-blue: #1e3a8a;
+    --primary-blue-light: #2563eb;
+    --gold: #f59e0b;
+    --gold-dark: #d97706;
+    
+    /* Couleurs neutres */
+    --bg-light: #fafafa;
+    --bg-white: #ffffff;
+    --text-dark: #1f2937;
+    --text-gray: #4b5563;
+    --text-light-gray: #6b7280;
+    
+    /* Tags et badges */
+    --tag-bg: #f5f5f0;
+    --tag-text: #374151;
+    --badge-orange: #f59e0b;
+    
+    /* Ombres */
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    
+    /* Bordures */
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    --radius-xl: 20px;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* ============================================
+   NAVIGATION
+   ============================================ */
+
+.main-nav {
+    background-color: var(--bg-white);
+    padding: 1rem 2rem;
+    box-shadow: var(--shadow-sm);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.nav-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 4rem;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.logo i {
+    color: var(--gold);
+    font-size: 1.5rem;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-gray);
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius-sm);
+    transition: all 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: var(--primary-blue);
+    background-color: #f3f4f6;
+}
+
+.nav-links a.active {
+    background-color: var(--primary-blue);
+    color: white;
+}
+
+/* ============================================
+   HERO SECTION
+   ============================================ */
+
+.hero-section {
+    position: relative;
+    height: 500px;
+    background-image: url('../images/premierre photo gastronomie.png');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    color: white;
+    max-width: 800px;
+    padding: 2rem;
+}
+
+.hero-title {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: white;
+}
+
+.hero-subtitle {
+    font-size: 1.25rem;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.95);
+}
+
+/* ============================================
+   MAIN CONTENT
+   ============================================ */
+
+.main-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+}
+
+/* ============================================
+   DISHES SECTION
+   ============================================ */
+
+.dishes-section,
+.more-dishes-section {
+    margin-bottom: 4rem;
+}
+
+.dishes-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+    gap: 2rem;
+}
+
+.dish-card {
+    background: var(--bg-white);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.dish-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+
+.dish-image {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+}
+
+.dish-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.dish-badge {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    background-color: var(--badge-orange);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius-md);
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.dish-badge.specialty {
+    background-color: var(--gold);
+}
+
+.dish-badge.breakfast {
+    background-color: var(--gold);
+}
+
+.dish-info {
+    padding: 1.5rem;
+}
+
+.dish-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-blue);
+    margin-bottom: 0.75rem;
+}
+
+.dish-description {
+    color: var(--text-gray);
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+.dish-details {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.detail-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-light-gray);
+    font-size: 0.9rem;
+}
+
+.detail-item i {
+    color: var(--primary-blue);
+}
+
+/* ============================================
+   INGREDIENTS & TIPS SECTION
+   ============================================ */
+
+.ingredients-tips-section {
+    margin-bottom: 4rem;
+}
+
+.ingredients-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+    gap: 2rem;
+}
+
+.ingredients-card {
+    background: var(--bg-white);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    box-shadow: var(--shadow-md);
+}
+
+.ingredients-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+}
+
+.ingredients-header i {
+    color: var(--primary-blue);
+    font-size: 1.25rem;
+}
+
+.ingredients-header h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.ingredients-tags,
+.ingredients-tags-small {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+}
+
+.ingredient-tag {
+    background-color: var(--tag-bg);
+    color: var(--tag-text);
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius-md);
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.berber-tip,
+.berber-tip-small {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    background-color: #fef3c7;
+    padding: 1rem;
+    border-radius: var(--radius-md);
+    border-left: 3px solid var(--gold);
+}
+
+.berber-tip i,
+.berber-tip-small i {
+    color: var(--gold);
+    font-size: 1.25rem;
+    margin-top: 0.25rem;
+}
+
+.berber-tip p,
+.berber-tip-small p {
+    color: var(--text-dark);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin: 0;
+}
+
+.berber-tip strong,
+.berber-tip-small strong {
+    color: var(--text-dark);
+}
+
+/* ============================================
+   ARGAN OIL SECTION
+   ============================================ */
+
+.argan-section {
+    margin-bottom: 4rem;
+}
+
+.argan-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+}
+
+.argan-card {
+    background: var(--bg-white);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.argan-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+
+.argan-image {
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+}
+
+.argan-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.argan-card:hover .argan-image img {
+    transform: scale(1.05);
+}
+
+.argan-content {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.argan-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+}
+
+.argan-description {
+    color: var(--text-gray);
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+.argan-details {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ============================================
+   PREPARATION METHOD
+   ============================================ */
+
+.preparation-method {
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 2px solid #f3f4f6;
+}
+
+.preparation-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.preparation-title i {
+    color: var(--gold);
+}
+
+.preparation-steps {
+    list-style: none;
+    counter-reset: step-counter;
+    padding-left: 0;
+}
+
+.preparation-steps li {
+    counter-increment: step-counter;
+    position: relative;
+    padding-left: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--text-gray);
+    line-height: 1.6;
+}
+
+.preparation-steps li::before {
+    content: counter(step-counter);
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 2rem;
+    height: 2rem;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-blue-light) 100%);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+/* ============================================
+   RESTAURANTS SECTION
+   ============================================ */
+
+.restaurants-section {
+    margin-bottom: 4rem;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--primary-blue);
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.restaurants-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.restaurant-card {
+    background: var(--bg-white);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    box-shadow: var(--shadow-md);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.restaurant-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+
+.restaurant-name {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-blue);
+    margin-bottom: 0.75rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.restaurant-rating {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: #fef3c7;
+    padding: 0.25rem 0.75rem;
+    border-radius: var(--radius-sm);
+    color: var(--gold-dark);
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.restaurant-rating i {
+    color: var(--gold);
+}
+
+.restaurant-specialty {
+    color: var(--text-gray);
+    font-size: 1rem;
+    margin-bottom: 1rem;
+}
+
+.restaurant-location {
+    color: var(--text-light-gray);
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.restaurant-location i {
+    color: var(--primary-blue);
+}
+
+.restaurant-btn {
+    width: 100%;
+    background-color: var(--primary-blue);
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--radius-md);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.restaurant-btn:hover {
+    background-color: var(--primary-blue-light);
+}
+
+/* ============================================
+   CTA SECTION
+   ============================================ */
+
+.cta-section {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-blue-light) 100%);
+    border-radius: var(--radius-xl);
+    padding: 4rem 2rem;
+    text-align: center;
+    color: white;
+    margin-bottom: 4rem;
+}
+
+.cta-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: white;
+}
+
+.cta-subtitle {
+    font-size: 1.25rem;
+    margin-bottom: 2rem;
+    opacity: 0.95;
+}
+
+.cta-button {
+    background-color: var(--gold);
+    color: white;
+    border: none;
+    padding: 1rem 2.5rem;
+    border-radius: var(--radius-md);
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.cta-button:hover {
+    background-color: var(--gold-dark);
+    transform: translateY(-2px);
+}
+
+.cta-button i {
+    font-size: 1.25rem;
+}
+
+/* ============================================
+   SCROLL TO TOP BUTTON
+   ============================================ */
+
+.scroll-top {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 50px;
+    height: 50px;
+    background-color: var(--gold);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    font-size: 1.25rem;
+    cursor: pointer;
+    box-shadow: var(--shadow-lg);
+    transition: all 0.3s ease;
+    z-index: 1000;
+    display: none;
+}
+
+.scroll-top:hover {
+    background-color: var(--gold-dark);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-xl);
+}
+
+.scroll-top.visible {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+
+@media (max-width: 1024px) {
+    .dishes-container,
+    .ingredients-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .argan-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .main-nav {
+        padding: 1rem;
+    }
+    
+    .nav-container {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.5rem;
+    }
+    
+    .nav-links a {
+        padding: 0.5rem;
+        font-size: 0.9rem;
+    }
+    
+    .hero-section {
+        height: 400px;
+    }
+    
+    .hero-title {
+        font-size: 2rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+    
+    .main-content {
+        padding: 2rem 1rem;
+    }
+    
+    .dishes-container,
+    .ingredients-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .dish-card,
+    .ingredients-card {
+        margin-bottom: 1.5rem;
+    }
+    
+    .restaurants-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+    }
+    
+    .cta-title {
+        font-size: 2rem;
+    }
+    
+    .cta-subtitle {
+        font-size: 1.1rem;
+    }
+    
+    .argan-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .argan-content {
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-section {
+        height: 300px;
+    }
+    
+    .dish-image {
+        height: 200px;
+    }
+    
+    .dish-title {
+        font-size: 1.25rem;
+    }
+    
+    .ingredients-card {
+        padding: 1.5rem;
+    }
+    
+    .restaurant-name {
+        font-size: 1.25rem;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+    
+    .cta-section {
+        padding: 3rem 1.5rem;
+    }
+    
+    .cta-title {
+        font-size: 1.75rem;
+    }
+}
