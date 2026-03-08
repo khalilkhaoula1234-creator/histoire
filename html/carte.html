@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carte Géographique - Souss-Massa</title>
+    <link rel="stylesheet" href="../css/carte.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+</head>
+<body>
+    <!-- Navigation Header -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>Souss-Massa</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="carte.html" class="active">Carte Géographique</a></li>
+                <li><a href="#">Lieux à Explorer</a></li>
+                <li><a href="#">Vêtements Traditionnels</a></li>
+                <li><a href="gastronomie.html">Gastronomie</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">Carte Interactive du Souss-Massa</h1>
+            <p class="hero-subtitle">Explorez la région Souss-Massa avec notre carte interactive</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Map Container -->
+        <section class="map-section">
+            <div class="map-container">
+                <div id="map"></div>
+            </div>
+        </section>
+
+        <!-- Info Section -->
+        <section class="info-section">
+            <div class="info-container">
+                <div class="info-card">
+                    <i class="fas fa-info-circle"></i>
+                    <h3>Comment utiliser la carte</h3>
+                    <p>Cliquez sur les marqueurs pour découvrir les détails de chaque monument. Utilisez les contrôles de zoom pour explorer la région en détail.</p>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-map-marked-alt"></i>
+                    <h3>Région Souss-Massa</h3>
+                    <p>La région s'étend de l'océan Atlantique aux contreforts de l'Atlas, offrant une diversité de paysages et de patrimoine culturel unique.</p>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-landmark"></i>
+                    <h3>Patrimoine Culturel</h3>
+                    <p>Découvrez les kasbahs historiques, les villes fortifiées et les sites naturels qui font la richesse du Souss-Massa.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-column">
+                <h3 class="footer-title">Souss-Massa</h3>
+                <p class="footer-description">
+                    Découvrez la beauté authentique du Souss-Massa : terre d'arganiers, de plages infinies et de traditions amazigh millénaires.
+                </p>
+            </div>
+            <div class="footer-column">
+                <h3 class="footer-title">Liens Rapides</h3>
+                <ul class="footer-links">
+                    <li><a href="carte.html">Carte Géographique</a></li>
+                    <li><a href="#">Lieux à Explorer</a></li>
+                    <li><a href="#">Vêtements Traditionnels</a></li>
+                    <li><a href="gastronomie.html">Gastronomie</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3 class="footer-title">Contact</h3>
+                <ul class="footer-contact">
+                    <li>
+                        <i class="fas fa-envelope"></i>
+                        <span>info@souss-massa.ma</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-phone"></i>
+                        <span>+212 528 XX XX XX</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Agadir, Maroc</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Souss-Massa. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <button class="scroll-top" id="scrollTop">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="../js/carte.js"></script>
+</body>
+</html>

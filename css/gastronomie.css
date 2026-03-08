@@ -319,8 +319,8 @@ body {
     font-weight: 500;
 }
 
-.berber-tip,
-.berber-tip-small {
+.amazigh-tip,
+.amazigh-tip-small {
     display: flex;
     align-items: flex-start;
     gap: 0.75rem;
@@ -330,23 +330,23 @@ body {
     border-left: 3px solid var(--gold);
 }
 
-.berber-tip i,
-.berber-tip-small i {
+.amazigh-tip i,
+.amazigh-tip-small i {
     color: var(--gold);
     font-size: 1.25rem;
     margin-top: 0.25rem;
 }
 
-.berber-tip p,
-.berber-tip-small p {
+.amazigh-tip p,
+.amazigh-tip-small p {
     color: var(--text-dark);
     font-size: 0.95rem;
     line-height: 1.6;
     margin: 0;
 }
 
-.berber-tip strong,
-.berber-tip-small strong {
+.amazigh-tip strong,
+.amazigh-tip-small strong {
     color: var(--text-dark);
 }
 
@@ -561,6 +561,7 @@ body {
 }
 
 .restaurant-btn {
+    display: block;
     width: 100%;
     background-color: var(--primary-blue);
     color: white;
@@ -571,10 +572,14 @@ body {
     font-weight: 600;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    text-decoration: none;
+    text-align: center;
 }
 
 .restaurant-btn:hover {
     background-color: var(--primary-blue-light);
+    color: white;
+    text-decoration: none;
 }
 
 /* ============================================
