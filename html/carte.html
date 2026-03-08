@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Géographie - Région Souss Massa</title>
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:'Inter',sans-serif;
+background:linear-gradient(135deg,#fffdf9,#f5f5f5);
+color:#2c3e50;
+}
+
+/* HERO HEADER */
+
+.hero{
+height:320px;
+background-image:url("/images/anti-atlas-mountains.jpg");
+background-size:cover;
+background-position:center;
+display:flex;
+align-items:center;
+justify-content:center;
+position:relative;
+}
+
+.hero::before{
+content:"";
+position:absolute;
+width:100%;
+height:100%;
+background:rgba(75, 49, 168, 0.5);
+}
+
+.hero-content{
+position:relative;
+text-align:center;
+color:white;
+}
+
+.hero-title{
+font-family:'Playfair Display',serif;
+font-size:46px;
+}
+
+.hero-subtitle{
+margin-top:10px;
+font-size:18px;
+}
+
+/* CONTAINER */
+
+.container{
+max-width:1200px;
+margin:auto;
+padding:40px 20px;
+}
+
+/* MAP */
+
+.map-container{
+background:white;
+border-radius:15px;
+box-shadow:0 10px 30px rgba(0,0,0,0.08);
+height:600px;
+overflow:hidden;
+position:relative;
+margin-bottom:40px;
+}
+
+#map{
+height:100%;
+width:100%;
+}
+
+/* LEGEND */
+
+.map-legend{
+position:absolute;
+bottom:20px;
+left:20px;
+background:white;
+padding:15px;
+border-radius:10px;
+box-shadow:0 5px 15px rgba(0,0,0,0.2);
+font-size:14px;
+}
+
+.legend-item{
+display:flex;
+align-items:center;
+margin-bottom:6px;
+}
+
+.legend-color{
+width:15px;
+height:15px;
+border-radius:50%;
+margin-right:8px;
+}
+
+/* INFO SECTION */
+
+.info-section{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:25px;
+}
+
+.info-card{
+background:white;
+padding:25px;
+border-radius:15px;
+box-shadow:0 10px 25px rgba(0,0,0,0.08);
+}
+
+.info-card h3{
+font-family:'Playfair Display',serif;
+margin-bottom:15px;
+color:#537be9;
+}
+
+.info-card p{
+line-height:1.6;
+font-size:15px;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:768px){
+
+.hero-title{
+font-size:32px;
+}
+
+.map-container{
+height:450px;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header class="hero">
+
+<div class="hero-content">
+
+<h1 class="hero-title">Région Souss Massa</h1>
+
+<p class="hero-subtitle">
+Carte géographique et informations sur la région
+</p>
+
+</div>
+
+</header>
+
+<div class="container">
+
+<div class="map-container">
+
+<div id="map"></div>
+
+<div class="map-legend">
+
+<div class="legend-item">
+<div class="legend-color" style="background:#3498db"></div>
+Villes principales
+</div>
+
+<div class="legend-item">
+<div class="legend-color" style="background:#27ae60"></div>
+Montagnes
+</div>
+
+<div class="legend-item">
+<div class="legend-color" style="background:#e74c3c"></div>
+Sites touristiques
+</div>
+
+</div>
+
+</div>
+
+<!-- AUTRES INFORMATIONS -->
+
+<section class="info-section">
+
+<div class="info-card">
+
+<h3>Présentation</h3>
+
+<p>
+La région de Souss-Massa est située au sud-ouest du Maroc.
+Elle est bordée par l’océan Atlantique et entourée par le
+Haut Atlas et l’Anti-Atlas. Sa capitale est la ville d’Agadir.
+</p>
+
+</div>
+
+<div class="info-card">
+
+<h3>Population</h3>
+
+<p>
+La région compte environ 3 millions d’habitants répartis
+entre les villes d’Agadir, Taroudant, Tiznit,
+Chtouka Ait Baha et Tata.
+</p>
+
+</div>
+
+<div class="info-card">
+
+<h3>Économie</h3>
+
+<p>
+L’économie repose sur l’agriculture,
+la pêche maritime, le tourisme et l’artisanat.
+La région est connue pour la production d’argan.
+</p>
+
+</div>
+
+<div class="info-card">
+
+<h3>Paysages</h3>
+
+<p>
+Le Souss Massa possède une grande diversité de paysages :
+plages atlantiques, montagnes de l’Anti-Atlas,
+vallées verdoyantes et oasis désertiques.
+</p>
+
+</div>
+
+</section>
+
+</div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<script>
+
+/* INITIALISATION CARTE */
+
+const map = L.map('map').setView([30.4,-9.6],9);
+
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
+attribution:'© OpenStreetMap'
+}).addTo(map);
+
+/* VILLES SOUSS MASSA */
+
+const villes = [
+
+{nom:"Agadir", coords:[30.4278,-9.5981]},
+{nom:"Taroudant", coords:[30.4727,-8.8769]},
+{nom:"Tiznit", coords:[29.6974,-9.7316]},
+{nom:"Tata", coords:[29.7444,-7.9750]},
+{nom:"Biougra", coords:[30.2167,-9.3667]},
+{nom:"Ait Melloul", coords:[30.3340,-9.4970]}
+
+];
+
+/* AJOUT MARQUEURS */
+
+villes.forEach(ville=>{
+
+L.marker(ville.coords)
+.addTo(map)
+.bindPopup("<b>"+ville.nom+"</b>");
+
+});
+
+</script>
+
+</body>
+</html>
