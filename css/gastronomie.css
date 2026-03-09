@@ -76,6 +76,12 @@ body {
     font-size: 1.25rem;
     font-weight: 600;
     color: var(--text-dark);
+    text-decoration: none;
+}
+
+.logo:hover {
+    color: var(--text-dark);
+    text-decoration: none;
 }
 
 .logo i {

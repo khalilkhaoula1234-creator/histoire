@@ -78,6 +78,12 @@ body {
     font-size: 1.25rem;
     font-weight: 600;
     color: var(--text-dark);
+    text-decoration: none;
+}
+
+.logo:hover {
+    color: var(--text-dark);
+    text-decoration: none;
 }
 
 .logo i {
@@ -113,7 +119,7 @@ body {
 
 height:450px;
 
-background-image:url("/images/this-is-banana-point.webp");
+background-image:url("../images/this-is-banana-point.webp");
 
 background-size:cover;
 
