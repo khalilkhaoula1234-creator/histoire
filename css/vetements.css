@@ -1,0 +1,288 @@
+/* ==========================================================
+   STYLE COMPLET : VÊTEMENTS & BIJOUX - SOUSS-MASSA
+   ========================================================== */
+
+/* --- Réglages de base --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-blue: #1e3a8a; /* Bleu foncé Souss */
+    --gold: #f59e0b;         /* Ocre/Or Amazigh */
+    --bg-light: #f4f7f6;    /* Fond de page gris très clair */
+    --bg-white: #ffffff;
+    --text-dark: #1f2937;
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+    line-height: 1.6;
+}
+
+/* ==========================================================
+   1. NAVIGATION & LOGO (Le style de tes copines)
+   ========================================================== */
+
+.main-nav {
+    background-color: var(--bg-white);
+    padding: 1rem 2rem; /* Espace intérieur de la barre */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.nav-container {
+    max-width: 1400px; /* Largeur maximale pour aligner avec le contenu */
+    margin: 0 auto;    /* Centre la barre de navigation */
+    display: flex;
+    justify-content: space-between; /* Logo à gauche, liens à droite */
+    align-items: center;gap: 4rem;
+}
+
+/* Style du Logo Souss-Massa */
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem; /* Espace entre l'icône et le texte */
+    text-decoration: none;
+    color: var(--text-dark);
+    font-weight: 600; /* Texte en gras semi-hard */
+    font-size: 1.25rem;
+}
+
+.logo i {
+    color: var(--gold); /* L'icône marker est dorée */
+    font-size: 1.5rem;
+}
+
+/* Style des liens de navigation */
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 1rem; /* Espace entre les boutons */
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #4b5563; /* Gris pour les liens inactifs */
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: 8px; /* Coins arrondis pour l'effet bouton */
+    transition: 0.3s;
+}
+
+/* Style du bouton actif (Vêtements Traditionnels) */
+.nav-links a.active,
+.nav-links a:hover {
+    background-color: var(--primary-blue); /* Fond bleu */
+    color: white; /* Texte blanc */
+}
+
+/* ==========================================================
+   2. HERO SECTION - L'IMAGE ENCADRÉE (Design Sophistiqué)
+   ========================================================== */
+
+.hero-section.amazigh-hero {
+    /* Fond de la section (ce qui dépasse de l'image) */
+    background-color: #e5e7eb; /* Gris clair élégant */
+    
+    /* Crée le cadre en ajoutant de l'espace sur les côtés */
+    padding: 40px; /* Espace de 40px tout autour */
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+.hero-section.amazigh-hero .hero-content-wrapper {
+    /* L'image elle-même devient le fond de ce conteneur intérieur */
+    width: 100%;
+    max-width: 1200px; /* Largeur max alignée sur le reste du site */
+    height: 500px;     /* Hauteur fixe de l'image */
+    
+    /* Chargement de l'image avec l'extension .png détectée */
+    background-image: url('../images/amazigh_girl_hero.png'); 
+    background-size: cover;
+    background-position: center;
+    
+    /* Design sophistiqué du cadre */
+    border-radius: 20px; /* Coins très arrondis */
+    overflow: hidden;    /* Pour que l'image suive l'arrondi */
+    box-shadow: 0 15px 30px rgba(0,0,0,0.15); /* Ombre douce portée */
+    
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* L'overlay sombre reste sur l'image */
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.3); /* Un peu plus clair pour plus d'élégance */
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+}
+
+.hero-title {
+    font-size: 3.5rem;
+    margin-bottom: 0.5rem;
+    font-weight: 800;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5); /* Ombre sur le texte */
+}
+
+.hero-subtitle {
+    font-size: 1.25rem;
+    font-weight: 300;
+}
+
+/* ==========================================================
+   3. GRILLE DE PHOTOS (Inchangée mais intégrée)
+   ========================================================== */
+
+.main-content {
+    max-width: 1200px;
+    margin: 4rem auto;
+    padding: 0 2rem;
+}
+
+.section-main-title {
+    text-align: center;
+    margin: 3rem 0;
+    color: var(--primary-blue);
+    font-size: 2.2rem;
+    font-weight: 700;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.section-main-title::after {
+    content: '';
+    width: 80px;
+    height: 4px;
+    background: var(--gold);
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.items-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-bottom: 5rem;
+}
+
+.item-card {
+    background: var(--bg-white);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+    transition: 0.3s;
+}
+
+.item-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+}
+
+.item-card img {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+}
+
+.item-name {
+    padding: 1.5rem;
+    text-align: center;
+    font-weight: 700;
+    color: var(--primary-blue);
+    font-size: 1.2rem;
+}
+
+/* Scroll Top */
+.scroll-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: var(--gold);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    display: none;
+    z-index: 1000;
+}
+/* Style pour les descriptions des cartes */
+.item-info {
+    padding: 1rem 1.5rem;
+    text-align: center;
+}
+
+.item-description {
+    font-size: 0.9rem;
+    color: #6b7280;
+    margin-top: 5px;
+    line-height: 1.4;
+}
+
+/* Style pour la section Shopping du bas */
+.shopping-section {
+    background-color: #fff;
+    padding: 3rem 2rem;
+    border-radius: 20px;
+    margin-bottom: 4rem;
+    box-shadow: var(--shadow-md);
+}
+
+.shopping-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    text-align: center;
+}
+
+.shopping-card i {
+    font-size: 2.5rem;
+    color: var(--gold);
+    margin-bottom: 1rem;
+}
+
+.shopping-card h3 {
+    color: var(--primary-blue);
+    margin-bottom: 0.5rem;
+}
+
+.cta-button {
+    background-color: var(--primary-blue);
+    color: white;
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.cta-button:hover {
+    background-color: var(--gold);
+}
